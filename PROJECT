@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VioletBroker | Premium Trading Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-purple: #2A0944;
+            --accent-purple: #3B185F;
+            --neon-purple: #A12568;
+            --pure-white: #FFFFFF;
+            --jet-black: #000000;
+        }
+
+        body {
+            background: var(--jet-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+        }
+
+        /* Glowing Header */
+        .header {
+            background: var(--primary-purple);
+            padding: 1.5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 0 25px rgba(161, 37, 104, 0.3);
+            border-bottom: 2px solid var(--neon-purple);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #A12568, #FFA1F5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hover Effect Links */
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--pure-white);
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: var(--neon-purple);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Cyber-style Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(45deg, var(--primary-purple), rgba(0,0,0,0.9)),
+                        url('https://source.unsplash.com/random/1920x1080/?finance,tech') center/cover;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 40%, var(--neon-purple) 50%, transparent 60%);
+            animation: glow 6s infinite linear;
+        }
+
+        @keyframes glow {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            background: rgba(0,0,0,0.7);
+            border-radius: 15px;
+            border: 2px solid var(--neon-purple);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #FFA1F5, #A12568);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Trading Cards */
+        .trading-cards {
+            padding: 5rem 2rem;
+            background: var(--primary-purple);
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .trade-card {
+            background: var(--accent-purple);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--neon-purple);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .trade-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(161, 37, 104, 0.4);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--neon-purple);
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--jet-black);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid var(--neon-purple);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, var(--neon-purple), transparent);
+            animation: statGlow 4s linear infinite;
+        }
+
+        @keyframes statGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">VIOLETTRADE</div>
+            <div class="nav-links">
+                <a href="#markets">Markets</a>
+                <a href="#platform">Platform</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Next-Gen Trading Experience</h1>
+            <p>Leverage cutting-edge technology with institutional-grade execution</p>
+            <button class="cta-button">Start Trading Now</button>
+        </div>
+    </section>
+
+    <section class="trading-cards">
+        <div class="cards-container">
+            <div class="trade-card">
+                <i class="fas fa-rocket card-icon"></i>
+                <h3>Ultra-Fast Execution</h3>
+                <p>99.9% order execution in less than 50ms</p>
+            </div>
+            <div class="trade-card">
+                <i class="fas fa-shield-alt card-icon"></i>
+                <h3>Bank-Level Security</h3>
+                <p>Military grade encryption and cold storage</p>
+            </div>
+            <div class="trade-card">
+                <i class="fas fa-chart-line card-icon"></i>
+                <h3>Advanced Analytics</h3>
+                <p>Real-time market insights and AI predictions</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-box">
+            <h3>$1T+</h3>
+            <p>Monthly Trading Volume</p>
+        </div>
+        <div class="stat-box">
+            <h3>500K+</h3>
+            <p>Active Traders</p>
+        </div>
+        <div class="stat-box">
+            <h3>150+</h3>
+            <p>Countries Supported</p>
+        </div>
+    </section>
+
+    <script>
+        // Dynamic header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            header.style.background = window.scrollY > 100 ? 
+                'rgba(42, 9, 68, 0.95)' : 
+                'var(--primary-purple)';
+        });
+
+        // Card hover effect enhancement
+        document.querySelectorAll('.trade-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2)/10}deg) rotateY(${-(x - rect.width/2)/10}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
